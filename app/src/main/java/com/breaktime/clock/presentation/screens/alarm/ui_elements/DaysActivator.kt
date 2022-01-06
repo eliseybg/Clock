@@ -49,7 +49,7 @@ fun DaysActivator(
                     fontWeight = if (state) FontWeight.Normal
                     else FontWeight.ExtraBold,
                     color = if (state) LightColors.darkBlue
-                    else LightColors.mediumGray
+                    else LightColors.lightGray
                 )
             }
         }

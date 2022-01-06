@@ -42,7 +42,7 @@ fun AlarmActivator(
                 checkedThumbColor = LightColors.darkBlue,
                 checkedTrackColor = LightColors.lightBlue,
                 uncheckedThumbColor = LightColors.darkBlue,
-                uncheckedTrackColor = LightColors.lightGray,
+                uncheckedTrackColor = LightColors.mediumGray,
                 checkedTrackAlpha = 1f,
                 uncheckedTrackAlpha = 1f
             ),
