@@ -6,23 +6,21 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
-// Set of Material typography styles to start with
 val Typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
+    h1 = TextStyle(
+        fontFamily = WorkSans,
         fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-    /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+        fontSize = 48.sp
     ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
+    body1 = TextStyle(
+        fontFamily = Roboto,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 23.sp,
+        color = LightColors.white
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = Roboto,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp
     )
-    */
 )
