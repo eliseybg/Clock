@@ -18,7 +18,7 @@ import java.lang.StringBuilder
 
 @ExperimentalMaterialApi
 @Composable
-fun ExpandableCard(alarmEntity: AlarmEntity) {
+fun AlarmItem(alarmEntity: AlarmEntity) {
     var expandableState by remember { mutableStateOf(false) }
     var activeState by remember { mutableStateOf(alarmEntity.isActive) }
     var label by remember { mutableStateOf(alarmEntity.label) }

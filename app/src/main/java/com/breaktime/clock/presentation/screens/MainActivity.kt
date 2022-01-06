@@ -1,4 +1,4 @@
-package com.breaktime.clock.presentation.screens.alarm
+package com.breaktime.clock.presentation.screens
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.breaktime.clock.data.AlarmEntity
+import com.breaktime.clock.presentation.screens.alarm.AlarmItem
 import com.breaktime.clock.ui.theme.ClockTheme
 import java.util.*
 
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Column {
                         Greeting(name = "d")
-                        ExpandableCard(item)
+                        AlarmItem(item)
                     }
                 }
             }
