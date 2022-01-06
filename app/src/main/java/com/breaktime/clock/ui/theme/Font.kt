@@ -7,4 +7,7 @@ import com.breaktime.clock.R
 
 val WorkSans = FontFamily(Font(R.font.worksans_regular, FontWeight.Normal))
 
-val Roboto = FontFamily(Font(R.font.roboto_regular, FontWeight.Normal))
+val Roboto = FontFamily(
+    Font(R.font.roboto_regular, FontWeight.Normal),
+    Font(R.font.roboto_medium, FontWeight.Medium)
+)

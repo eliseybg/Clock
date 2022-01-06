@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.TextUnit
 
 @Composable
 fun StyledText(
@@ -15,13 +16,14 @@ fun StyledText(
     textStyle: TextStyle,
     color: Color = textStyle.color,
     fontWeight: FontWeight? = textStyle.fontWeight,
+    fontSize: TextUnit = textStyle.fontSize,
     maxLines: Int = 1,
     overflow: TextOverflow = TextOverflow.Ellipsis
 ) {
     Text(
         modifier = modifier,
         text = text,
-        fontSize = textStyle.fontSize,
+        fontSize = fontSize,
         fontFamily = textStyle.fontFamily,
         fontWeight = fontWeight,
         color = color,
