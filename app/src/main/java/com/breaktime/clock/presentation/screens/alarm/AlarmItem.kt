@@ -41,7 +41,8 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                     easing = LinearOutSlowInEasing
                 )
             )
-            .padding(horizontal = 23.dp, vertical = 10.dp),
+            .padding(horizontal = 23.dp)
+            .padding(top = 10.dp),
         backgroundColor = MaterialTheme.colors.onBackground,
         onClick = {
             expandableState = !expandableState
