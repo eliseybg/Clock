@@ -45,6 +45,6 @@ private fun AlarmList(alarm: List<AlarmEntity>) {
         alarm.forEach {
             AlarmItem(alarmEntity = it)
         }
-
+        Spacer(Modifier.fillMaxWidth().height(120.dp))
     }
 }
