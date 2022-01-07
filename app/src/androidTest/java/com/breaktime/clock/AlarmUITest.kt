@@ -1,13 +1,11 @@
 package com.breaktime.clock
 
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.TopAppBar
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.breaktime.clock.data.AlarmEntity
-import com.breaktime.clock.presentation.screens.MainActivity
 import com.breaktime.clock.presentation.screens.TopAppBarContent
 import com.breaktime.clock.presentation.screens.alarm.AlarmFragment
 import com.breaktime.clock.presentation.screens.alarm.AlarmItem
@@ -81,7 +79,7 @@ class AlarmUITest {
     fun testAlarmItemDropDown() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -93,7 +91,7 @@ class AlarmUITest {
     fun testAlarmItemSelectTime() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -106,7 +104,7 @@ class AlarmUITest {
     fun testAlarmItemDismiss() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -120,7 +118,7 @@ class AlarmUITest {
     fun testAlarmItemActivate() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -133,7 +131,7 @@ class AlarmUITest {
     fun testAlarmItemLabel() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -146,7 +144,7 @@ class AlarmUITest {
     fun testAlarmItemDaySelector() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onNodeWithContentDescription("Drop-Down arrow").performClick()
@@ -165,7 +163,7 @@ class AlarmUITest {
     fun testAlarmItemSound() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -178,7 +176,7 @@ class AlarmUITest {
     fun testAlarmItemVibrate() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -191,7 +189,7 @@ class AlarmUITest {
     fun testAlarmItemGoogleAssistant() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -204,7 +202,7 @@ class AlarmUITest {
     fun testAlarmItemDelete() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")
@@ -217,7 +215,7 @@ class AlarmUITest {
     fun testAlarmItemChangeShowDay() {
         composeTestRule.setContent {
             ClockTheme {
-                AlarmItem(AlarmEntity(time = Date()))
+                AlarmItem(AlarmEntity(alarmTime = 3 to 25))
             }
         }
         composeTestRule.onRoot().printToLog("TAG:")

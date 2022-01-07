@@ -15,8 +15,8 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import com.breaktime.clock.data.AlarmEntity
 import com.breaktime.clock.presentation.screens.alarm.ui_elements.*
-import java.lang.StringBuilder
-import java.text.SimpleDateFormat
+import com.breaktime.clock.util.asTime
+import com.breaktime.clock.util.getActiveDays
 
 @SuppressLint("SimpleDateFormat")
 @ExperimentalMaterialApi
@@ -25,7 +25,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
     var expandableState by remember { mutableStateOf(false) }
     var activeState by remember { mutableStateOf(alarmEntity.isActive) }
     var label by remember { mutableStateOf(alarmEntity.label) }
-    var activeDaysState by remember { mutableStateOf(getActiveDays(alarmEntity, activeState)) }
+    var activeDaysState by remember { mutableStateOf(alarmEntity.getActiveDays(activeState)) }
     var vibrateState by remember { mutableStateOf(alarmEntity.isVibrate) }
     var googleAssistState by remember { mutableStateOf(true) }
     val rotationState by animateFloatAsState(
@@ -70,13 +70,12 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                             .padding(end = 30.dp),
                         text = label,
                         onClick = {
-//                            label = TODO()
                             // TODO: 28.12.21 open dialog to write label
                         })
                 }
 
                 TimeWidget(
-                    text = SimpleDateFormat("HH:mm").format(alarmEntity.time),
+                    text = alarmEntity.alarmTime.asTime(),
                     activeState = activeState,
                     onClick = {
                         // TODO: 6.01.22 open time selector
@@ -89,14 +88,14 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                     text = activeDaysState,
                     onCheckedChange = {
                         activeState = !activeState
-                        activeDaysState = getActiveDays(alarmEntity, activeState)
+                        activeDaysState = alarmEntity.getActiveDays(activeState)
                     }
                 )
                 if (expandableState) {
                     DaysActivator(
                         alarmEntity = alarmEntity,
                         onClick = {
-                            activeDaysState = getActiveDays(alarmEntity, activeState)
+                            activeDaysState = alarmEntity.getActiveDays(activeState)
                         }
                     )
 
@@ -142,20 +141,4 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
             }
         }
     }
-}
-
-private fun getActiveDays(alarmEntity: AlarmEntity, isActiveAlarm: Boolean): String {
-    val activeDays = alarmEntity.selectedDays.filter { it.value }
-    val days = when (activeDays.size) {
-        0 -> if (isActiveAlarm) "Tomorrow" else "Not scheduled"
-        1 -> activeDays.keys.first()
-        7 -> "Every day"
-        else -> with(StringBuilder()) {
-            activeDays.keys.forEach {
-                append(it.substring(0, 3)).append(", ")
-            }
-            substring(0, length - 2).toString()
-        }
-    }
-    return days
 }
