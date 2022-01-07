@@ -1,5 +1,6 @@
 package com.breaktime.clock.presentation.screens.alarm
 
+import android.annotation.SuppressLint
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -15,7 +16,9 @@ import androidx.compose.ui.unit.dp
 import com.breaktime.clock.data.AlarmEntity
 import com.breaktime.clock.presentation.screens.alarm.ui_elements.*
 import java.lang.StringBuilder
+import java.text.SimpleDateFormat
 
+@SuppressLint("SimpleDateFormat")
 @ExperimentalMaterialApi
 @Composable
 fun AlarmItem(alarmEntity: AlarmEntity) {
@@ -72,7 +75,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                 }
 
                 TimeWidget(
-                    text = "05:00",
+                    text = SimpleDateFormat("HH:mm").format(alarmEntity.time),
                     activeState = activeState,
                     onClick = {
                         // TODO: 6.01.22 open time selector
