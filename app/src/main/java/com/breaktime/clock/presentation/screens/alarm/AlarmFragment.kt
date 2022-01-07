@@ -1,10 +1,9 @@
 package com.breaktime.clock.presentation.screens.alarm
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -41,11 +40,10 @@ fun AlarmFragment() {
 @ExperimentalMaterialApi
 @Composable
 private fun AlarmList(alarm: List<AlarmEntity>) {
-    LazyColumn {
+    val scrollState = rememberScrollState()
+    Column(Modifier.verticalScroll(scrollState)) {
         alarm.forEach {
-            item {
-                AlarmItem(alarmEntity = it)
-            }
+            AlarmItem(alarmEntity = it)
         }
 
     }
