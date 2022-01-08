@@ -14,8 +14,10 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import com.breaktime.clock.data.AlarmEntity
 import com.breaktime.clock.presentation.screens.alarm.ui_elements.*
+import com.breaktime.clock.util.VibratorUtil
 import com.breaktime.clock.util.asTime
 import com.breaktime.clock.util.getActiveDays
+import org.koin.androidx.compose.get
 
 @ExperimentalMaterialApi
 @Composable
@@ -106,12 +108,14 @@ fun AlarmItem(alarmViewModel: AlarmViewModel, alarmEntity: AlarmEntity) {
                             // TODO: 28.12.21 select sound
                         }
                     )
-
+                    val vibrator = get<VibratorUtil>()
                     VibrateButton(
                         vibrateState = vibrateState,
                         onClick = {
                             vibrateState = !vibrateState
                             alarmViewModel.updateAlarm(alarmEntity.copy(isVibrate = vibrateState))
+                            if (vibrateState)
+                                vibrator.vibrate()
                         })
 
                     GoogleAssistantButton(
