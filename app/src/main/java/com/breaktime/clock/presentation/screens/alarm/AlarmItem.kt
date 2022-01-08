@@ -19,7 +19,7 @@ import com.breaktime.clock.util.getActiveDays
 
 @ExperimentalMaterialApi
 @Composable
-fun AlarmItem(alarmEntity: AlarmEntity) {
+fun AlarmItem(alarmViewModel: AlarmViewModel, alarmEntity: AlarmEntity) {
     var expandableState by remember { mutableStateOf(false) }
     var activeState by remember { mutableStateOf(alarmEntity.isActive) }
     var label by remember { mutableStateOf(alarmEntity.label) }
@@ -87,6 +87,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                     onCheckedChange = {
                         activeState = !activeState
                         activeDaysState = alarmEntity.getActiveDays(activeState)
+                        alarmViewModel.updateAlarm(alarmEntity.copy(isActive = activeState))
                     }
                 )
                 if (expandableState) {
@@ -94,6 +95,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                         alarmEntity = alarmEntity,
                         onClick = {
                             activeDaysState = alarmEntity.getActiveDays(activeState)
+                            alarmViewModel.updateAlarm(alarmEntity)
                         }
                     )
 
@@ -107,7 +109,10 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
 
                     VibrateButton(
                         vibrateState = vibrateState,
-                        onClick = { vibrateState = !vibrateState })
+                        onClick = {
+                            vibrateState = !vibrateState
+                            alarmViewModel.updateAlarm(alarmEntity.copy(isVibrate = vibrateState))
+                        })
 
                     GoogleAssistantButton(
                         modifier = Modifier
@@ -124,6 +129,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                         modifier = Modifier.padding(bottom = 10.dp),
                         onClick = {
                             activeState = false
+                            alarmViewModel.updateAlarm(alarmEntity.copy(isActive = false))
                         }
                     )
                 }
@@ -132,7 +138,7 @@ fun AlarmItem(alarmEntity: AlarmEntity) {
                         modifier = Modifier
                             .padding(bottom = 10.dp),
                         onClick = {
-                            // TODO: 29.12.21  delete alarm
+                            alarmViewModel.deleteAlarm(alarmEntity)
                         }
                     )
                 }
