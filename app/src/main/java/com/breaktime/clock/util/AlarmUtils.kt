@@ -9,15 +9,14 @@ private val DAYS_NAMES = listOf(
     "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
 )
 
-fun Pair<Int, Int>.asTime() = with(StringBuilder()) {
+fun Pair<Int, Int>.asTime() = StringBuilder().apply {
     if (first !in 0..24 || second !in 0..60)
         throw Exception("Time format exception")
     if (first < 10) append("0")
     append("$first:")
     if (second < 10) append("0")
     append(second)
-    toString()
-}
+}.toString()
 
 operator fun Pair<Int, Int>.compareTo(another: Pair<Int, Int>) = when {
     first < another.first -> -1
@@ -37,15 +36,15 @@ fun AlarmEntity.getActiveDays(isActiveAlarm: Boolean): String {
         0 -> if (isActiveAlarm) dayOfAlarm else "Not scheduled"
         1 -> activeDays.keys.first()
         7 -> "Every day"
-        else -> with(StringBuilder()) {
+        else -> buildString {
             activeDays.keys.forEach {
                 append("${it.substring(0, 3)}, ")
             }
-            substring(0, length - 2).toString()
+            substring(0, length - 2)
         }
     }
 }
 
-fun defaultSelectedDays() = with(LinkedHashMap<String, Boolean>()) {
-    also { DAYS_NAMES.forEach { day -> this[day] = true } }
+fun defaultSelectedDays() = LinkedHashMap<String, Boolean>().also {
+    DAYS_NAMES.forEach { day -> it[day] = true }
 }

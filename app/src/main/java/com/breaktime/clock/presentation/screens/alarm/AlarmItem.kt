@@ -1,6 +1,5 @@
 package com.breaktime.clock.presentation.screens.alarm
 
-import android.annotation.SuppressLint
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -18,7 +17,6 @@ import com.breaktime.clock.presentation.screens.alarm.ui_elements.*
 import com.breaktime.clock.util.asTime
 import com.breaktime.clock.util.getActiveDays
 
-@SuppressLint("SimpleDateFormat")
 @ExperimentalMaterialApi
 @Composable
 fun AlarmItem(alarmEntity: AlarmEntity) {
