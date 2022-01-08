@@ -1,5 +1,6 @@
 package com.breaktime.clock.data
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -18,5 +19,5 @@ interface AlarmDao {
     suspend fun deleteAllAlarms()
 
     @Query("SELECT * FROM alarm_database ORDER BY id")
-    fun readAllData(): Flow<List<AlarmEntity>>
+    fun readAllData(): LiveData<List<AlarmEntity>>
 }
